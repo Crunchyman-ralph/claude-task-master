@@ -1,7 +1,7 @@
 # Task ID: 10
 # Title: Create Research-Backed Subtask Generation
 # Status: done
-# Dependencies: 7 ✅, 9 ✅
+# Dependencies: 7, 9
 # Priority: low
 # Description: Enhance subtask generation with research capabilities from Perplexity API.
 # Details:
@@ -16,79 +16,39 @@ Implement research-backed generation including:
 Compare subtasks generated with and without research backing. Verify that research-backed subtasks include more specific technical details and best practices.
 
 # Subtasks:
-## Subtask ID: 1
-## Title: Design Domain-Specific Research Prompt Templates
-## Status: done
-## Dependencies: None
-## Description: Create a set of specialized prompt templates for different software development domains (e.g., web development, mobile, data science, DevOps). Each template should be structured to extract relevant best practices, libraries, tools, and implementation patterns from Perplexity API. Implement a prompt template selection mechanism based on the task context and domain.
-## Acceptance Criteria:
-- At least 5 domain-specific prompt templates are created and stored in a dedicated templates directory
-- Templates include specific sections for querying best practices, tools, libraries, and implementation patterns
-- A prompt selection function is implemented that can determine the appropriate template based on task metadata
-- Templates are parameterized to allow dynamic insertion of task details and context
-- Documentation is added explaining each template's purpose and structure
+## 1. Design Domain-Specific Research Prompt Templates [done]
+### Dependencies: None
+### Description: Create a set of specialized prompt templates for different software development domains (e.g., web development, mobile, data science, DevOps). Each template should be structured to extract relevant best practices, libraries, tools, and implementation patterns from Perplexity API. Implement a prompt template selection mechanism based on the task context and domain.
+### Details:
 
-## Subtask ID: 2
-## Title: Implement Research Query Execution and Response Processing
-## Status: done
-## Dependencies: None
-## Description: Build a module that executes research queries using the Perplexity API integration. This should include sending the domain-specific prompts, handling the API responses, and parsing the results into a structured format that can be used for context enrichment. Implement error handling, rate limiting, and fallback to Claude when Perplexity is unavailable.
-## Acceptance Criteria:
-- Function to execute research queries with proper error handling and retries
-- Response parser that extracts structured data from Perplexity's responses
-- Fallback mechanism that uses Claude when Perplexity fails or is unavailable
-- Caching system to avoid redundant API calls for similar research queries
-- Logging system for tracking API usage and response quality
-- Unit tests verifying correct handling of successful and failed API calls
 
-## Subtask ID: 3
-## Title: Develop Context Enrichment Pipeline
-## Status: done
-## Dependencies: 10.2 ✅
-## Description: Create a pipeline that processes research results and enriches the task context with relevant information. This should include filtering irrelevant information, organizing research findings by category (tools, libraries, best practices, etc.), and formatting the enriched context for use in subtask generation. Implement a scoring mechanism to prioritize the most relevant research findings.
-## Acceptance Criteria:
-- Context enrichment function that takes raw research results and task details as input
-- Filtering system to remove irrelevant or low-quality information
-- Categorization of research findings into distinct sections (tools, libraries, patterns, etc.)
-- Relevance scoring algorithm to prioritize the most important findings
-- Formatted output that can be directly used in subtask generation prompts
-- Tests comparing enriched context quality against baseline
+## 2. Implement Research Query Execution and Response Processing [done]
+### Dependencies: None
+### Description: Build a module that executes research queries using the Perplexity API integration. This should include sending the domain-specific prompts, handling the API responses, and parsing the results into a structured format that can be used for context enrichment. Implement error handling, rate limiting, and fallback to Claude when Perplexity is unavailable.
+### Details:
 
-## Subtask ID: 4
-## Title: Implement Domain-Specific Knowledge Incorporation
-## Status: done
-## Dependencies: 10.3 ✅
-## Description: Develop a system to incorporate domain-specific knowledge into the subtask generation process. This should include identifying key domain concepts, technical requirements, and industry standards from the research results. Create a knowledge base structure that organizes domain information and can be referenced during subtask generation.
-## Acceptance Criteria:
-- Domain knowledge extraction function that identifies key technical concepts
-- Knowledge base structure for organizing domain-specific information
-- Integration with the subtask generation prompt to incorporate relevant domain knowledge
-- Support for technical terminology and concept explanation in generated subtasks
-- Mechanism to link domain concepts to specific implementation recommendations
-- Tests verifying improved technical accuracy in generated subtasks
 
-## Subtask ID: 5
-## Title: Enhance Subtask Generation with Technical Details
-## Status: done
-## Dependencies: 10.3 ✅, 10.4 ✅
-## Description: Extend the existing subtask generation functionality to incorporate research findings and produce more technically detailed subtasks. This includes modifying the Claude prompt templates to leverage the enriched context, implementing specific sections for technical approach, implementation notes, and potential challenges. Ensure generated subtasks include concrete technical details rather than generic steps.
-## Acceptance Criteria:
-- Enhanced prompt templates for Claude that incorporate research-backed context
-- Generated subtasks include specific technical approaches and implementation details
-- Each subtask contains references to relevant tools, libraries, or frameworks
-- Implementation notes section with code patterns or architectural recommendations
-- Potential challenges and mitigation strategies are included where appropriate
-- Comparative tests showing improvement over baseline subtask generation
+## 3. Develop Context Enrichment Pipeline [done]
+### Dependencies: 10.2
+### Description: Create a pipeline that processes research results and enriches the task context with relevant information. This should include filtering irrelevant information, organizing research findings by category (tools, libraries, best practices, etc.), and formatting the enriched context for use in subtask generation. Implement a scoring mechanism to prioritize the most relevant research findings.
+### Details:
 
-## Subtask ID: 6
-## Title: Implement Reference and Resource Inclusion
-## Status: done
-## Dependencies: 10.3 ✅, 10.5 ✅
-## Description: Create a system to include references to relevant libraries, tools, documentation, and other resources in generated subtasks. This should extract specific references from research results, validate their relevance, and format them as actionable links or citations within subtasks. Implement a verification step to ensure referenced resources are current and applicable.
-## Acceptance Criteria:
-- Reference extraction function that identifies tools, libraries, and resources from research
-- Validation mechanism to verify reference relevance and currency
-- Formatting system for including references in subtask descriptions
-- Support for different reference types (GitHub repos, documentation, articles, etc.)
-- Optional version specification for referenced libraries and tools
-- Tests verifying that included references are relevant and accessible
+
+## 4. Implement Domain-Specific Knowledge Incorporation [done]
+### Dependencies: 10.3
+### Description: Develop a system to incorporate domain-specific knowledge into the subtask generation process. This should include identifying key domain concepts, technical requirements, and industry standards from the research results. Create a knowledge base structure that organizes domain information and can be referenced during subtask generation.
+### Details:
+
+
+## 5. Enhance Subtask Generation with Technical Details [done]
+### Dependencies: 10.3, 10.4
+### Description: Extend the existing subtask generation functionality to incorporate research findings and produce more technically detailed subtasks. This includes modifying the Claude prompt templates to leverage the enriched context, implementing specific sections for technical approach, implementation notes, and potential challenges. Ensure generated subtasks include concrete technical details rather than generic steps.
+### Details:
+
+
+## 6. Implement Reference and Resource Inclusion [done]
+### Dependencies: 10.3, 10.5
+### Description: Create a system to include references to relevant libraries, tools, documentation, and other resources in generated subtasks. This should extract specific references from research results, validate their relevance, and format them as actionable links or citations within subtasks. Implement a verification step to ensure referenced resources are current and applicable.
+### Details:
+
+

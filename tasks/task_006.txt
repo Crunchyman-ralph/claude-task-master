@@ -1,7 +1,7 @@
 # Task ID: 6
 # Title: Build PRD Parsing System
 # Status: done
-# Dependencies: 1 ✅, 5 ✅
+# Dependencies: 1, 5
 # Priority: high
 # Description: Create the system for parsing Product Requirements Documents into structured task lists.
 # Details:
@@ -17,75 +17,39 @@ Implement PRD parsing functionality including:
 Test with sample PRDs of varying complexity. Verify that generated tasks accurately reflect the requirements in the PRD. Check that dependencies and priorities are logically assigned.
 
 # Subtasks:
-## Subtask ID: 1
-## Title: Implement PRD File Reading Module
-## Status: done
-## Dependencies: None
-## Description: Create a module that can read PRD files from a specified file path. The module should handle different file formats (txt, md, docx) and extract the text content. Implement error handling for file not found, permission issues, and invalid file formats. Add support for encoding detection and proper text extraction to ensure the content is correctly processed regardless of the source format.
-## Acceptance Criteria:
-- Function accepts a file path and returns the PRD content as a string
-- Supports at least .txt and .md file formats (with extensibility for others)
-- Implements robust error handling with meaningful error messages
-- Successfully reads files of various sizes (up to 10MB)
-- Preserves formatting where relevant for parsing (headings, lists, code blocks)
+## 1. Implement PRD File Reading Module [done]
+### Dependencies: None
+### Description: Create a module that can read PRD files from a specified file path. The module should handle different file formats (txt, md, docx) and extract the text content. Implement error handling for file not found, permission issues, and invalid file formats. Add support for encoding detection and proper text extraction to ensure the content is correctly processed regardless of the source format.
+### Details:
 
-## Subtask ID: 2
-## Title: Design and Engineer Effective PRD Parsing Prompts
-## Status: done
-## Dependencies: None
-## Description: Create a set of carefully engineered prompts for Claude API that effectively extract structured task information from PRD content. Design prompts that guide Claude to identify tasks, dependencies, priorities, and implementation details from unstructured PRD text. Include system prompts, few-shot examples, and output format specifications to ensure consistent results.
-## Acceptance Criteria:
-- At least 3 different prompt templates optimized for different PRD styles/formats
-- Prompts include clear instructions for identifying tasks, dependencies, and priorities
-- Output format specification ensures Claude returns structured, parseable data
-- Includes few-shot examples to guide Claude's understanding
-- Prompts are optimized for token efficiency while maintaining effectiveness
 
-## Subtask ID: 3
-## Title: Implement PRD to Task Conversion System
-## Status: done
-## Dependencies: 6.1 ✅
-## Description: Develop the core functionality that sends PRD content to Claude API and converts the response into the task data structure. This includes sending the engineered prompts with PRD content to Claude, parsing the structured response, and transforming it into valid task objects that conform to the task model. Implement validation to ensure the generated tasks meet all requirements.
-## Acceptance Criteria:
-- Successfully sends PRD content to Claude API with appropriate prompts
-- Parses Claude's response into structured task objects
-- Validates generated tasks against the task model schema
-- Handles API errors and response parsing failures gracefully
-- Generates unique and sequential task IDs
+## 2. Design and Engineer Effective PRD Parsing Prompts [done]
+### Dependencies: None
+### Description: Create a set of carefully engineered prompts for Claude API that effectively extract structured task information from PRD content. Design prompts that guide Claude to identify tasks, dependencies, priorities, and implementation details from unstructured PRD text. Include system prompts, few-shot examples, and output format specifications to ensure consistent results.
+### Details:
 
-## Subtask ID: 4
-## Title: Build Intelligent Dependency Inference System
-## Status: done
-## Dependencies: 6.1 ✅, 6.3 ✅
-## Description: Create an algorithm that analyzes the generated tasks and infers logical dependencies between them. The system should identify which tasks must be completed before others based on the content and context of each task. Implement both explicit dependency detection (from Claude's output) and implicit dependency inference (based on task relationships and logical ordering).
-## Acceptance Criteria:
-- Correctly identifies explicit dependencies mentioned in task descriptions
-- Infers implicit dependencies based on task context and relationships
-- Prevents circular dependencies in the task graph
-- Provides confidence scores for inferred dependencies
-- Allows for manual override/adjustment of detected dependencies
 
-## Subtask ID: 5
-## Title: Implement Priority Assignment Logic
-## Status: done
-## Dependencies: 6.1 ✅, 6.3 ✅
-## Description: Develop a system that assigns appropriate priorities (high, medium, low) to tasks based on their content, dependencies, and position in the PRD. Create algorithms that analyze task descriptions, identify critical path tasks, and consider factors like technical risk and business value. Implement both automated priority assignment and manual override capabilities.
-## Acceptance Criteria:
-- Assigns priorities based on multiple factors (dependencies, critical path, risk)
-- Identifies foundation/infrastructure tasks as high priority
-- Balances priorities across the project (not everything is high priority)
-- Provides justification for priority assignments
-- Allows for manual adjustment of priorities
+## 3. Implement PRD to Task Conversion System [done]
+### Dependencies: 6.1
+### Description: Develop the core functionality that sends PRD content to Claude API and converts the response into the task data structure. This includes sending the engineered prompts with PRD content to Claude, parsing the structured response, and transforming it into valid task objects that conform to the task model. Implement validation to ensure the generated tasks meet all requirements.
+### Details:
 
-## Subtask ID: 6
-## Title: Implement PRD Chunking for Large Documents
-## Status: done
-## Dependencies: 6.1 ✅, 6.5 ✅, 6.3 ✅
-## Description: Create a system that can handle large PRDs by breaking them into manageable chunks for processing. Implement intelligent document segmentation that preserves context across chunks, tracks section relationships, and maintains coherence in the generated tasks. Develop a mechanism to reassemble and deduplicate tasks generated from different chunks into a unified task list.
-## Acceptance Criteria:
-- Successfully processes PRDs larger than Claude's context window
-- Intelligently splits documents at logical boundaries (sections, chapters)
-- Preserves context when processing individual chunks
-- Reassembles tasks from multiple chunks into a coherent task list
-- Detects and resolves duplicate or overlapping tasks
-- Maintains correct dependency relationships across chunks
+
+## 4. Build Intelligent Dependency Inference System [done]
+### Dependencies: 6.1, 6.3
+### Description: Create an algorithm that analyzes the generated tasks and infers logical dependencies between them. The system should identify which tasks must be completed before others based on the content and context of each task. Implement both explicit dependency detection (from Claude's output) and implicit dependency inference (based on task relationships and logical ordering).
+### Details:
+
+
+## 5. Implement Priority Assignment Logic [done]
+### Dependencies: 6.1, 6.3
+### Description: Develop a system that assigns appropriate priorities (high, medium, low) to tasks based on their content, dependencies, and position in the PRD. Create algorithms that analyze task descriptions, identify critical path tasks, and consider factors like technical risk and business value. Implement both automated priority assignment and manual override capabilities.
+### Details:
+
+
+## 6. Implement PRD Chunking for Large Documents [done]
+### Dependencies: 6.1, 6.5, 6.3
+### Description: Create a system that can handle large PRDs by breaking them into manageable chunks for processing. Implement intelligent document segmentation that preserves context across chunks, tracks section relationships, and maintains coherence in the generated tasks. Develop a mechanism to reassemble and deduplicate tasks generated from different chunks into a unified task list.
+### Details:
+
+

@@ -30,14 +30,29 @@ program
   .version('1.0.0')  // Will be replaced by prepare-package script
   .option('-y, --yes', 'Skip prompts and use default values')
   .option('-n, --name <name>', 'Project name')
+  .option('-my_name <name>', 'Project name (alias for --name)')
   .option('-d, --description <description>', 'Project description')
+  .option('-my_description <description>', 'Project description (alias for --description)')
   .option('-v, --version <version>', 'Project version')
+  .option('-my_version <version>', 'Project version (alias for --version)')
+  .option('--my_name <name>', 'Project name (alias for --name)')
   .option('-a, --author <author>', 'Author name')
   .option('--skip-install', 'Skip installing dependencies')
   .option('--dry-run', 'Show what would be done without making changes')
   .parse(process.argv);
 
 const options = program.opts();
+
+// Map custom aliases to standard options
+if (options.my_name && !options.name) {
+  options.name = options.my_name;
+}
+if (options.my_description && !options.description) {
+  options.description = options.my_description;
+}
+if (options.my_version && !options.version) {
+  options.version = options.my_version;
+}
 
 // Define log levels
 const LOG_LEVELS = {
@@ -143,6 +158,9 @@ function copyTemplateFile(templateName, targetPath, replacements = {}) {
     case 'README-task-master.md':
       sourcePath = path.join(__dirname, '..', 'README-task-master.md');
       break;
+    case 'windsurfrules':
+      sourcePath = path.join(__dirname, '..', 'assets', '.windsurfrules');
+      break;
     default:
       // For other files like env.example, gitignore, etc. that don't have direct equivalents
       sourcePath = path.join(__dirname, '..', 'assets', templateName);
@@ -187,6 +205,20 @@ function copyTemplateFile(templateName, targetPath, replacements = {}) {
       } else {
         log('info', `No new content to add to ${targetPath}`);
       }
+      return;
+    }
+    
+    // Handle .windsurfrules - append the entire content
+    if (filename === '.windsurfrules') {
+      log('info', `${targetPath} already exists, appending content instead of overwriting...`);
+      const existingContent = fs.readFileSync(targetPath, 'utf8');
+      
+      // Add a separator comment before appending our content
+      const updatedContent = existingContent.trim() + 
+        '\n\n# Added by Task Master - Development Workflow Rules\n\n' + 
+        content;
+      fs.writeFileSync(targetPath, updatedContent);
+      log('success', `Updated ${targetPath} with additional rules`);
       return;
     }
     
@@ -481,6 +513,9 @@ function createProjectStructure(projectName, projectDescription, projectVersion,
   // Copy self_improve.mdc
   copyTemplateFile('self_improve.mdc', path.join(targetDir, '.cursor', 'rules', 'self_improve.mdc'));
   
+  // Copy .windsurfrules
+  copyTemplateFile('windsurfrules', path.join(targetDir, '.windsurfrules'));
+  
   // Copy scripts/dev.js
   copyTemplateFile('dev.js', path.join(targetDir, 'scripts', 'dev.js'));
   
@@ -542,7 +577,7 @@ function createProjectStructure(projectName, projectDescription, projectVersion,
     chalk.white('1. ') + chalk.yellow('Rename .env.example to .env and add your ANTHROPIC_API_KEY and PERPLEXITY_API_KEY') + '\n' +
     chalk.white('2. ') + chalk.yellow('Discuss your idea with AI, and once ready ask for a PRD using the example_prd.txt file, and save what you get to scripts/PRD.txt') + '\n' +
     chalk.white('3. ') + chalk.yellow('Ask Cursor Agent to parse your PRD.txt and generate tasks') + '\n' +
-    chalk.white('   └─ ') + chalk.dim('You can also run ') + chalk.cyan('npm run parse-prd -- --input=<your-prd-file.txt>') + '\n' +
+    chalk.white('   └─ ') + chalk.dim('You can also run ') + chalk.cyan('task-master parse-prd <your-prd-file.txt>') + '\n' +
     chalk.white('4. ') + chalk.yellow('Ask Cursor to analyze the complexity of your tasks') + '\n' +
     chalk.white('5. ') + chalk.yellow('Ask Cursor which task is next to determine where to start') + '\n' +
     chalk.white('6. ') + chalk.yellow('Ask Cursor to expand any complex tasks that are too large or complex.') + '\n' +

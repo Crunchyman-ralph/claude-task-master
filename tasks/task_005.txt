@@ -1,7 +1,7 @@
 # Task ID: 5
 # Title: Integrate Anthropic Claude API
 # Status: done
-# Dependencies: 1 ✅
+# Dependencies: 1
 # Priority: high
 # Description: Set up the integration with Claude API for AI-powered task generation and expansion.
 # Details:
@@ -17,78 +17,39 @@ Implement Claude API integration including:
 Test API connectivity with sample prompts. Verify authentication works correctly with different API keys. Test error handling by simulating API failures.
 
 # Subtasks:
-## Subtask ID: 1
-## Title: Configure API Authentication System
-## Status: done
-## Dependencies: None
-## Description: Create a dedicated module for Anthropic API authentication. Implement a secure system to load API keys from environment variables using dotenv. Include validation to ensure API keys are properly formatted and present. Create a configuration object that will store all Claude-related settings including API keys, base URLs, and default parameters.
-## Acceptance Criteria:
-- Environment variables are properly loaded from .env file
-- API key validation is implemented with appropriate error messages
-- Configuration object includes all necessary Claude API parameters
-- Authentication can be tested with a simple API call
-- Documentation is added for required environment variables
+## 1. Configure API Authentication System [done]
+### Dependencies: None
+### Description: Create a dedicated module for Anthropic API authentication. Implement a secure system to load API keys from environment variables using dotenv. Include validation to ensure API keys are properly formatted and present. Create a configuration object that will store all Claude-related settings including API keys, base URLs, and default parameters.
+### Details:
 
-## Subtask ID: 2
-## Title: Develop Prompt Template System
-## Status: done
-## Dependencies: 5.1 ✅
-## Description: Create a flexible prompt template system for Claude API interactions. Implement a PromptTemplate class that can handle variable substitution, system and user messages, and proper formatting according to Claude's requirements. Include templates for different operations (task generation, task expansion, etc.) with appropriate instructions and constraints for each use case.
-## Acceptance Criteria:
-- PromptTemplate class supports variable substitution
-- System and user message separation is properly implemented
-- Templates exist for all required operations (task generation, expansion, etc.)
-- Templates include appropriate constraints and formatting instructions
-- Template system is unit tested with various inputs
 
-## Subtask ID: 3
-## Title: Implement Response Handling and Parsing
-## Status: done
-## Dependencies: 5.1 ✅, 5.2 ✅
-## Description: Create a response handling system that processes Claude API responses. Implement JSON parsing for structured outputs, error detection in responses, and extraction of relevant information. Build utility functions to transform Claude's responses into the application's data structures. Include validation to ensure responses meet expected formats.
-## Acceptance Criteria:
-- Response parsing functions handle both JSON and text formats
-- Error detection identifies malformed or unexpected responses
-- Utility functions transform responses into task data structures
-- Validation ensures responses meet expected schemas
-- Edge cases like empty or partial responses are handled gracefully
+## 2. Develop Prompt Template System [done]
+### Dependencies: 5.1
+### Description: Create a flexible prompt template system for Claude API interactions. Implement a PromptTemplate class that can handle variable substitution, system and user messages, and proper formatting according to Claude's requirements. Include templates for different operations (task generation, task expansion, etc.) with appropriate instructions and constraints for each use case.
+### Details:
 
-## Subtask ID: 4
-## Title: Build Error Management with Retry Logic
-## Status: done
-## Dependencies: 5.1 ✅, 5.3 ✅
-## Description: Implement a robust error handling system for Claude API interactions. Create middleware that catches API errors, network issues, and timeout problems. Implement exponential backoff retry logic that increases wait time between retries. Add configurable retry limits and timeout settings. Include detailed logging for troubleshooting API issues.
-## Acceptance Criteria:
-- All API errors are caught and handled appropriately
-- Exponential backoff retry logic is implemented
-- Retry limits and timeouts are configurable
-- Detailed error logging provides actionable information
-- System degrades gracefully when API is unavailable
-- Unit tests verify retry behavior with mocked API failures
 
-## Subtask ID: 5
-## Title: Implement Token Usage Tracking
-## Status: done
-## Dependencies: 5.1 ✅, 5.3 ✅
-## Description: Create a token tracking system to monitor Claude API usage. Implement functions to count tokens in prompts and responses. Build a logging system that records token usage per operation. Add reporting capabilities to show token usage trends and costs. Implement configurable limits to prevent unexpected API costs.
-## Acceptance Criteria:
-- Token counting functions accurately estimate usage
-- Usage logging records tokens per operation type
-- Reporting functions show usage statistics and estimated costs
-- Configurable limits can prevent excessive API usage
-- Warning system alerts when approaching usage thresholds
-- Token tracking data is persisted between application runs
+## 3. Implement Response Handling and Parsing [done]
+### Dependencies: 5.1, 5.2
+### Description: Create a response handling system that processes Claude API responses. Implement JSON parsing for structured outputs, error detection in responses, and extraction of relevant information. Build utility functions to transform Claude's responses into the application's data structures. Include validation to ensure responses meet expected formats.
+### Details:
 
-## Subtask ID: 6
-## Title: Create Model Parameter Configuration System
-## Status: done
-## Dependencies: 5.1 ✅, 5.5 ✅
-## Description: Implement a flexible system for configuring Claude model parameters. Create a configuration module that manages model selection, temperature, top_p, max_tokens, and other parameters. Build functions to customize parameters based on operation type. Add validation to ensure parameters are within acceptable ranges. Include preset configurations for different use cases (creative, precise, etc.).
-## Acceptance Criteria:
-- Configuration module manages all Claude model parameters
-- Parameter customization functions exist for different operations
-- Validation ensures parameters are within acceptable ranges
-- Preset configurations exist for different use cases
-- Parameters can be overridden at runtime when needed
-- Documentation explains parameter effects and recommended values
-- Unit tests verify parameter validation and configuration loading
+
+## 4. Build Error Management with Retry Logic [done]
+### Dependencies: 5.1, 5.3
+### Description: Implement a robust error handling system for Claude API interactions. Create middleware that catches API errors, network issues, and timeout problems. Implement exponential backoff retry logic that increases wait time between retries. Add configurable retry limits and timeout settings. Include detailed logging for troubleshooting API issues.
+### Details:
+
+
+## 5. Implement Token Usage Tracking [done]
+### Dependencies: 5.1, 5.3
+### Description: Create a token tracking system to monitor Claude API usage. Implement functions to count tokens in prompts and responses. Build a logging system that records token usage per operation. Add reporting capabilities to show token usage trends and costs. Implement configurable limits to prevent unexpected API costs.
+### Details:
+
+
+## 6. Create Model Parameter Configuration System [done]
+### Dependencies: 5.1, 5.5
+### Description: Implement a flexible system for configuring Claude model parameters. Create a configuration module that manages model selection, temperature, top_p, max_tokens, and other parameters. Build functions to customize parameters based on operation type. Add validation to ensure parameters are within acceptable ranges. Include preset configurations for different use cases (creative, precise, etc.).
+### Details:
+
+

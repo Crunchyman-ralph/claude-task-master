@@ -1,7 +1,7 @@
 # Task ID: 3
 # Title: Implement Basic Task Operations
 # Status: done
-# Dependencies: 1 ✅, 2 ✅
+# Dependencies: 1
 # Priority: high
 # Description: Create core functionality for managing tasks including listing, creating, updating, and deleting tasks.
 # Details:
@@ -16,52 +16,3 @@ Implement the following task operations:
 
 # Test Strategy:
 Test each operation with valid and invalid inputs. Verify that dependencies are properly tracked and that status changes are reflected correctly in the tasks.json file.
-
-# Subtasks:
-## Subtask ID: 1
-## Title: Implement Task Listing with Filtering
-## Status: done
-## Dependencies: None
-## Description: Create a function that retrieves tasks from the tasks.json file and implements filtering options. Use the Commander.js CLI to add a 'list' command with various filter flags (e.g., --status, --priority, --dependency). Implement sorting options for the list output.
-## Acceptance Criteria:
-- 'list' command is available in the CLI with help documentation
-
-## Subtask ID: 2
-## Title: Develop Task Creation Functionality
-## Status: done
-## Dependencies: 3.1 ✅
-## Description: Implement a 'create' command in the CLI that allows users to add new tasks to the tasks.json file. Prompt for required fields (title, description, priority) and optional fields (dependencies, details, test strategy). Validate input and assign a unique ID to the new task.
-## Acceptance Criteria:
-- 'create' command is available with interactive prompts for task details
-
-## Subtask ID: 3
-## Title: Implement Task Update Operations
-## Status: done
-## Dependencies: 3.1 ✅, 3.2 ✅
-## Description: Create an 'update' command that allows modification of existing task properties. Implement options to update individual fields or enter an interactive mode for multiple updates. Ensure that updates maintain data integrity, especially for dependencies.
-## Acceptance Criteria:
-- 'update' command accepts a task ID and field-specific flags for quick updates
-
-## Subtask ID: 4
-## Title: Develop Task Deletion Functionality
-## Status: done
-## Dependencies: 3.1 ✅, 3.2 ✅, 3.3 ✅
-## Description: Implement a 'delete' command to remove tasks from tasks.json. Include safeguards against deleting tasks with dependencies and provide a force option to override. Update any tasks that had the deleted task as a dependency.
-## Acceptance Criteria:
-- 'delete' command removes the specified task from tasks.json
-
-## Subtask ID: 5
-## Title: Implement Task Status Management
-## Status: done
-## Dependencies: 3.1 ✅, 3.2 ✅, 3.3 ✅
-## Description: Create a 'status' command to change the status of tasks (pending/done/deferred). Implement logic to handle status changes, including updating dependent tasks if necessary. Add a batch mode for updating multiple task statuses at once.
-## Acceptance Criteria:
-- 'status' command changes task status correctly in tasks.json
-
-## Subtask ID: 6
-## Title: Develop Task Dependency and Priority Management
-## Status: done
-## Dependencies: 3.1 ✅, 3.2 ✅, 3.3 ✅
-## Description: Implement 'dependency' and 'priority' commands to manage task relationships and importance. Create functions to add/remove dependencies and change priorities. Ensure the system prevents circular dependencies and maintains consistent priority levels.
-## Acceptance Criteria:
-- 'dependency' command can add or remove task dependencies

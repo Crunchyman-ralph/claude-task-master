@@ -308,3 +308,26 @@ alwaysApply: true
     - Prompts for project settings if not provided
     - Merges with existing files when appropriate
     - Can be used to bootstrap a new Task Master project quickly
+
+- **Code Analysis & Refactoring Techniques**
+  - **Top-Level Function Search**
+    - Use grep pattern matching to find all exported functions across the codebase
+    - Command: `grep -E "export (function|const) \w+|function \w+\(|const \w+ = \(|module\.exports" --include="*.js" -r ./`
+    - Benefits:
+      - Quickly identify all public API functions without reading implementation details
+      - Compare functions between files during refactoring (e.g., monolithic to modular structure)
+      - Verify all expected functions exist in refactored modules
+      - Identify duplicate functionality or naming conflicts
+    - Usage examples:
+      - When migrating from `scripts/dev.js` to modular structure: `grep -E "function \w+\(" scripts/dev.js`
+      - Check function exports in a directory: `grep -E "export (function|const)" scripts/modules/`
+      - Find potential naming conflicts: `grep -E "function (get|set|create|update)\w+\(" -r ./`
+    - Variations:
+      - Add `-n` flag to include line numbers
+      - Add `--include="*.ts"` to filter by file extension
+      - Use with `| sort` to alphabetize results
+    - Integration with refactoring workflow:
+      - Start by mapping all functions in the source file
+      - Create target module files based on function grouping
+      - Verify all functions were properly migrated
+      - Check for any unintentional duplications or omissions

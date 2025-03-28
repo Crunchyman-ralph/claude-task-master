@@ -1,7 +1,7 @@
 # Task ID: 18
 # Title: Create Comprehensive User Documentation
 # Status: done
-# Dependencies: 1 ✅, 2 ✅, 3 ✅, 4 ✅, 5 ✅, 6 ✅, 7 ✅, 11 ✅, 12 ✅, 16 ✅
+# Dependencies: 1, 3, 4, 5, 6, 7, 11, 12, 16
 # Priority: medium
 # Description: Develop complete user documentation including README, examples, and troubleshooting guides.
 # Details:
@@ -19,80 +19,39 @@ Create user documentation including:
 Review documentation for clarity and completeness. Have users unfamiliar with the system attempt to follow the documentation and note any confusion or issues.
 
 # Subtasks:
-## Subtask ID: 1
-## Title: Create Detailed README with Installation and Usage Instructions
-## Status: done
-## Dependencies: 18.3 ✅
-## Description: Develop a comprehensive README.md file that serves as the primary documentation entry point. Include project overview, installation steps for different environments, basic usage examples, and links to other documentation sections. Structure the README with clear headings, code blocks for commands, and screenshots where helpful.
-## Acceptance Criteria:
-- README includes project overview, features list, and system requirements
-- Installation instructions cover all supported platforms with step-by-step commands
-- Basic usage examples demonstrate core functionality with command syntax
-- Configuration section explains environment variables and .env file usage
-- Documentation includes badges for version, license, and build status
-- All sections are properly formatted with Markdown for readability
+## 1. Create Detailed README with Installation and Usage Instructions [done]
+### Dependencies: 18.3
+### Description: Develop a comprehensive README.md file that serves as the primary documentation entry point. Include project overview, installation steps for different environments, basic usage examples, and links to other documentation sections. Structure the README with clear headings, code blocks for commands, and screenshots where helpful.
+### Details:
 
-## Subtask ID: 2
-## Title: Develop Command Reference Documentation
-## Status: done
-## Dependencies: 18.3 ✅
-## Description: Create detailed documentation for all CLI commands, their options, arguments, and examples. Organize commands by functionality category, include syntax diagrams, and provide real-world examples for each command. Document all global options and environment variables that affect command behavior.
-## Acceptance Criteria:
-- All commands are documented with syntax, options, and arguments
-- Each command includes at least 2 practical usage examples
-- Commands are organized into logical categories (task management, AI integration, etc.)
-- Global options are documented with their effects on command execution
-- Exit codes and error messages are documented for troubleshooting
-- Documentation includes command output examples
 
-## Subtask ID: 3
-## Title: Create Configuration and Environment Setup Guide
-## Status: done
-## Dependencies: None
-## Description: Develop a comprehensive guide for configuring the application, including environment variables, .env file setup, API keys management, and configuration best practices. Include security considerations for API keys and sensitive information. Document all configuration options with their default values and effects.
-## Acceptance Criteria:
-- All environment variables are documented with purpose, format, and default values
-- Step-by-step guide for setting up .env file with examples
-- Security best practices for managing API keys
-- Configuration troubleshooting section with common issues and solutions
-- Documentation includes example configurations for different use cases
-- Validation rules for configuration values are clearly explained
+## 2. Develop Command Reference Documentation [done]
+### Dependencies: 18.3
+### Description: Create detailed documentation for all CLI commands, their options, arguments, and examples. Organize commands by functionality category, include syntax diagrams, and provide real-world examples for each command. Document all global options and environment variables that affect command behavior.
+### Details:
 
-## Subtask ID: 4
-## Title: Develop Example Workflows and Use Cases
-## Status: done
-## Dependencies: 18.3 ✅, 18.6 ✅
-## Description: Create detailed documentation of common workflows and use cases, showing how to use the tool effectively for different scenarios. Include step-by-step guides with command sequences, expected outputs, and explanations. Cover basic to advanced workflows, including PRD parsing, task expansion, and implementation drift handling.
-## Acceptance Criteria:
-- At least 5 complete workflow examples from initialization to completion
-- Each workflow includes all commands in sequence with expected outputs
-- Screenshots or terminal recordings illustrate the workflows
-- Explanation of decision points and alternatives within workflows
-- Advanced use cases demonstrate integration with development processes
-- Examples show how to handle common edge cases and errors
 
-## Subtask ID: 5
-## Title: Create Troubleshooting Guide and FAQ
-## Status: done
-## Dependencies: 18.1 ✅, 18.2 ✅, 18.3 ✅
-## Description: Develop a comprehensive troubleshooting guide that addresses common issues, error messages, and their solutions. Include a FAQ section covering common questions about usage, configuration, and best practices. Document known limitations and workarounds for edge cases.
-## Acceptance Criteria:
-- All error messages are documented with causes and solutions
-- Common issues are organized by category (installation, configuration, execution)
-- FAQ covers at least 15 common questions with detailed answers
-- Troubleshooting decision trees help users diagnose complex issues
-- Known limitations and edge cases are clearly documented
-- Recovery procedures for data corruption or API failures are included
+## 3. Create Configuration and Environment Setup Guide [done]
+### Dependencies: None
+### Description: Develop a comprehensive guide for configuring the application, including environment variables, .env file setup, API keys management, and configuration best practices. Include security considerations for API keys and sensitive information. Document all configuration options with their default values and effects.
+### Details:
 
-## Subtask ID: 6
-## Title: Develop API Integration and Extension Documentation
-## Status: done
-## Dependencies: 18.5 ✅
-## Description: Create technical documentation for API integrations (Claude, Perplexity) and extension points. Include details on prompt templates, response handling, token optimization, and custom integrations. Document the internal architecture to help developers extend the tool with new features or integrations.
-## Acceptance Criteria:
-- Detailed documentation of all API integrations with authentication requirements
-- Prompt templates are documented with variables and expected responses
-- Token usage optimization strategies are explained
-- Extension points are documented with examples
-- Internal architecture diagrams show component relationships
-- Custom integration guide includes step-by-step instructions and code examples
+
+## 4. Develop Example Workflows and Use Cases [done]
+### Dependencies: 18.3, 18.6
+### Description: Create detailed documentation of common workflows and use cases, showing how to use the tool effectively for different scenarios. Include step-by-step guides with command sequences, expected outputs, and explanations. Cover basic to advanced workflows, including PRD parsing, task expansion, and implementation drift handling.
+### Details:
+
+
+## 5. Create Troubleshooting Guide and FAQ [done]
+### Dependencies: 18.1, 18.2, 18.3
+### Description: Develop a comprehensive troubleshooting guide that addresses common issues, error messages, and their solutions. Include a FAQ section covering common questions about usage, configuration, and best practices. Document known limitations and workarounds for edge cases.
+### Details:
+
+
+## 6. Develop API Integration and Extension Documentation [done]
+### Dependencies: 18.5
+### Description: Create technical documentation for API integrations (Claude, Perplexity) and extension points. Include details on prompt templates, response handling, token optimization, and custom integrations. Document the internal architecture to help developers extend the tool with new features or integrations.
+### Details:
+
+

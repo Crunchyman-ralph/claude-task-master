@@ -1,7 +1,7 @@
 # Task ID: 7
 # Title: Implement Task Expansion with Claude
 # Status: done
-# Dependencies: 3 ✅, 5 ✅
+# Dependencies: 3, 5
 # Priority: medium
 # Description: Create functionality to expand tasks into subtasks using Claude's AI capabilities.
 # Details:
@@ -17,68 +17,33 @@ Build task expansion functionality including:
 Test expanding various types of tasks into subtasks. Verify that subtasks are properly linked to parent tasks. Check that context is properly incorporated into generated subtasks.
 
 # Subtasks:
-## Subtask ID: 1
-## Title: Design and Implement Subtask Generation Prompts
-## Status: done
-## Dependencies: None
-## Description: Create optimized prompt templates for Claude to generate subtasks from parent tasks. Design the prompts to include task context, project information, and formatting instructions that ensure consistent, high-quality subtask generation. Implement a prompt template system that allows for dynamic insertion of task details, configurable number of subtasks, and additional context parameters.
-## Acceptance Criteria:
-- At least two prompt templates are created (standard and detailed)
-- Prompts include clear instructions for formatting subtask output
-- Prompts dynamically incorporate task title, description, details, and context
-- Prompts include parameters for specifying the number of subtasks to generate
-- Prompt system allows for easy modification and extension of templates
+## 1. Design and Implement Subtask Generation Prompts [done]
+### Dependencies: None
+### Description: Create optimized prompt templates for Claude to generate subtasks from parent tasks. Design the prompts to include task context, project information, and formatting instructions that ensure consistent, high-quality subtask generation. Implement a prompt template system that allows for dynamic insertion of task details, configurable number of subtasks, and additional context parameters.
+### Details:
 
-## Subtask ID: 2
-## Title: Develop Task Expansion Workflow and UI
-## Status: done
-## Dependencies: 7.5 ✅
-## Description: Implement the command-line interface and workflow for expanding tasks into subtasks. Create a new command that allows users to select a task, specify the number of subtasks, and add optional context. Design the interaction flow to handle the API request, process the response, and update the tasks.json file with the newly generated subtasks.
-## Acceptance Criteria:
-- Command `node scripts/dev.js expand --id=<task_id> --count=<number>` is implemented
-- Optional parameters for additional context (`--context="..."`) are supported
-- User is shown progress indicators during API calls
-- Generated subtasks are displayed for review before saving
-- Command handles errors gracefully with helpful error messages
-- Help documentation for the expand command is comprehensive
 
-## Subtask ID: 3
-## Title: Implement Context-Aware Expansion Capabilities
-## Status: done
-## Dependencies: 7.1 ✅
-## Description: Enhance the task expansion functionality to incorporate project context when generating subtasks. Develop a system to gather relevant information from the project, such as related tasks, dependencies, and previously completed work. Implement logic to include this context in the Claude prompts to improve the relevance and quality of generated subtasks.
-## Acceptance Criteria:
-- System automatically gathers context from related tasks and dependencies
-- Project metadata is incorporated into expansion prompts
-- Implementation details from dependent tasks are included in context
-- Context gathering is configurable (amount and type of context)
-- Generated subtasks show awareness of existing project structure and patterns
-- Context gathering has reasonable performance even with large task collections
+## 2. Develop Task Expansion Workflow and UI [done]
+### Dependencies: 7.5
+### Description: Implement the command-line interface and workflow for expanding tasks into subtasks. Create a new command that allows users to select a task, specify the number of subtasks, and add optional context. Design the interaction flow to handle the API request, process the response, and update the tasks.json file with the newly generated subtasks.
+### Details:
 
-## Subtask ID: 4
-## Title: Build Parent-Child Relationship Management
-## Status: done
-## Dependencies: 7.3 ✅
-## Description: Implement the data structure and operations for managing parent-child relationships between tasks and subtasks. Create functions to establish these relationships in the tasks.json file, update the task model to support subtask arrays, and develop utilities to navigate, filter, and display task hierarchies. Ensure all basic task operations (update, delete, etc.) properly handle subtask relationships.
-## Acceptance Criteria:
-- Task model is updated to include subtasks array
-- Subtasks have proper ID format (parent.sequence)
-- Parent tasks track their subtasks with proper references
-- Task listing command shows hierarchical structure
-- Completing all subtasks automatically updates parent task status
-- Deleting a parent task properly handles orphaned subtasks
-- Task file generation includes subtask information
 
-## Subtask ID: 5
-## Title: Implement Subtask Regeneration Mechanism
-## Status: done
-## Dependencies: 7.1 ✅, 7.2 ✅, 7.4 ✅
-## Description: Create functionality that allows users to regenerate unsatisfactory subtasks. Implement a command that can target specific subtasks for regeneration, preserve satisfactory subtasks, and incorporate feedback to improve the new generation. Design the system to maintain proper parent-child relationships and task IDs during regeneration.
-## Acceptance Criteria:
-- Command `node scripts/dev.js regenerate --id=<subtask_id>` is implemented
-- Option to regenerate all subtasks for a parent (`--all`)
-- Feedback parameter allows user to guide regeneration (`--feedback="..."`)
-- Original subtask details are preserved in prompt context
-- Regenerated subtasks maintain proper ID sequence
-- Task relationships remain intact after regeneration
-- Command provides clear before/after comparison of subtasks
+## 3. Implement Context-Aware Expansion Capabilities [done]
+### Dependencies: 7.1
+### Description: Enhance the task expansion functionality to incorporate project context when generating subtasks. Develop a system to gather relevant information from the project, such as related tasks, dependencies, and previously completed work. Implement logic to include this context in the Claude prompts to improve the relevance and quality of generated subtasks.
+### Details:
+
+
+## 4. Build Parent-Child Relationship Management [done]
+### Dependencies: 7.3
+### Description: Implement the data structure and operations for managing parent-child relationships between tasks and subtasks. Create functions to establish these relationships in the tasks.json file, update the task model to support subtask arrays, and develop utilities to navigate, filter, and display task hierarchies. Ensure all basic task operations (update, delete, etc.) properly handle subtask relationships.
+### Details:
+
+
+## 5. Implement Subtask Regeneration Mechanism [done]
+### Dependencies: 7.1, 7.2, 7.4
+### Description: Create functionality that allows users to regenerate unsatisfactory subtasks. Implement a command that can target specific subtasks for regeneration, preserve satisfactory subtasks, and incorporate feedback to improve the new generation. Design the system to maintain proper parent-child relationships and task IDs during regeneration.
+### Details:
+
+
