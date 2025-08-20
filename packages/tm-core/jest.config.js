@@ -23,6 +23,7 @@ export default {
 		]
 	},
 	moduleNameMapper: {
+		'^(\\.{1,2}/.*)\\.js$': '$1',
 		'^@/(.*)$': '<rootDir>/src/$1',
 		'^@/types/(.*)$': '<rootDir>/src/types/$1',
 		'^@/providers/(.*)$': '<rootDir>/src/providers/$1',

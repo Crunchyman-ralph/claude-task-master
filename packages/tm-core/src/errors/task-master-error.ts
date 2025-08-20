@@ -135,6 +135,17 @@ export class TaskMasterError extends Error {
 	/** Timestamp when error was created */
 	public readonly timestamp: Date;
 
+	/** Enable development logging (default: true in development, false in production) */
+	public static enableDevLogging: boolean = process.env.NODE_ENV !== 'production';
+
+	/**
+	 * Set development logging state
+	 * @param enabled - Whether to enable development logging
+	 */
+	public static setDevLogging(enabled: boolean): void {
+		TaskMasterError.enableDevLogging = enabled;
+	}
+
 	/**
 	 * Create a new TaskMasterError
 	 *
@@ -320,5 +331,36 @@ export class TaskMasterError extends Error {
 		context: ErrorContext = {}
 	): TaskMasterError {
 		return new TaskMasterError(message, code, context, this);
+	}
+
+	/**
+	 * Log error details based on development mode
+	 * In development: logs full error details including stack trace
+	 * In production: logs only error code and safe message
+	 */
+	public logError(): void {
+		if (TaskMasterError.enableDevLogging) {
+			// Development mode: log full details
+			console.error('TaskMasterError (Development):', {
+				name: this.name,
+				message: this.message,
+				code: this.code,
+				context: this.context,
+				stack: this.stack,
+				cause: this.cause ? {
+					name: this.cause.name,
+					message: this.cause.message,
+					stack: this.cause.stack
+				} : undefined,
+				timestamp: this.timestamp
+			});
+		} else {
+			// Production mode: log only safe information
+			console.error('TaskMasterError:', {
+				code: this.code,
+				message: this.getUserMessage(),
+				timestamp: this.timestamp
+			});
+		}
 	}
 }

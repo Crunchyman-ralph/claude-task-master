@@ -3,7 +3,7 @@
  * This file exports all parsing-related classes and functions
  */
 
-import type { PlaceholderTask } from '../types/index';
+import type { Task } from '../types/index.js';
 
 // Parser implementations will be defined here
 // export * from './prd-parser.js';
@@ -12,7 +12,7 @@ import type { PlaceholderTask } from '../types/index';
 
 // Placeholder exports - these will be implemented in later tasks
 export interface TaskParser {
-	parse(content: string): Promise<PlaceholderTask[]>;
+	parse(content: string): Promise<Task[]>;
 	validate(content: string): Promise<boolean>;
 }
 
@@ -20,16 +20,21 @@ export interface TaskParser {
  * @deprecated This is a placeholder class that will be properly implemented in later tasks
  */
 export class PlaceholderParser implements TaskParser {
-	async parse(content: string): Promise<PlaceholderTask[]> {
-		// Simple placeholder parsing logic
+	async parse(content: string): Promise<Task[]> {
+		// Simple placeholder parsing logic - returns minimal Task objects
 		const lines = content
 			.split('\n')
 			.filter((line) => line.trim().startsWith('-'));
 		return lines.map((line, index) => ({
 			id: `task-${index + 1}`,
 			title: line.trim().replace(/^-\s*/, ''),
+			description: '',
 			status: 'pending' as const,
-			priority: 'medium' as const
+			priority: 'medium' as const,
+			dependencies: [],
+			details: '',
+			testStrategy: '',
+			subtasks: []
 		}));
 	}
 

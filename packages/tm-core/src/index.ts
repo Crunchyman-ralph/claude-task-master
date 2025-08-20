@@ -4,26 +4,29 @@
  */
 
 // Re-export types
-export type * from './types/index';
+export type * from './types/index.js';
 
 // Re-export interfaces
-export type * from './interfaces/index';
-export * from './interfaces/index';
+export type * from './interfaces/index.js';
+export * from './interfaces/index.js';
 
 // Re-export providers
-export * from './providers/index';
+export * from './providers/index.js';
 
 // Re-export storage
-export * from './storage/index';
+export * from './storage/index.js';
 
 // Re-export parser
-export * from './parser/index';
+export * from './parser/index.js';
 
 // Re-export utilities
-export * from './utils/index';
+export * from './utils/index.js';
 
 // Re-export errors
-export * from './errors/index';
+export * from './errors/index.js';
+
+// Re-export config
+export * from './config/index.js';
 
 // Package metadata
 export const version = '1.0.0';
