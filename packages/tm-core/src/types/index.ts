@@ -226,3 +226,16 @@ export type Priority = TaskPriority;
  * @deprecated Use TaskComplexity instead
  */
 export type Complexity = TaskComplexity;
+
+// Re-export legacy types
+export type { TaskId } from './legacy.js';
+
+/**
+ * @deprecated Placeholder task type for backward compatibility with tests
+ */
+export interface PlaceholderTask {
+	id: string;
+	title: string;
+	status: TaskStatus;
+	priority: TaskPriority;
+}

@@ -9,16 +9,11 @@ export * from './base-provider.js';
 // export * from './openai-provider.js';
 // export * from './perplexity-provider.js';
 
-// Placeholder exports - these will be implemented in later tasks
-export interface AIProvider {
-	name: string;
-	generateResponse(prompt: string): Promise<string>;
-}
-
+// Temporary backward compatibility exports for existing tests
 /**
- * @deprecated This is a placeholder class that will be properly implemented in later tasks
+ * @deprecated This is a placeholder class for backward compatibility with existing tests
  */
-export class PlaceholderProvider implements AIProvider {
+export class PlaceholderProvider {
 	name = 'placeholder';
 
 	async generateResponse(prompt: string): Promise<string> {

@@ -3,57 +3,56 @@
  * This file exports all custom error types and error handling utilities
  */
 
-// Error implementations will be defined here
+// Base error exports
+export * from './task-master-error.js';
+
+// Specialized error exports
+export * from './file-not-found-error.js';
+export * from './parse-error.js';
+export * from './validation-error.js';
+export * from './api-error.js';
+
+// Future error implementations will be added here
 // export * from './task-errors.js';
 // export * from './storage-errors.js';
 // export * from './provider-errors.js';
-// export * from './validation-errors.js';
 
-// Placeholder exports - these will be implemented in later tasks
+// Re-export key types and constants for convenience
+export type { ErrorContext, SerializableError } from './task-master-error.js';
+export type { ValidationDetails } from './validation-error.js';
+export type { APIErrorDetails } from './api-error.js';
+
+// Temporary backward compatibility exports for existing tests
+import { TaskMasterError } from './task-master-error.js';
 
 /**
- * Base error class for all tm-core errors
- * @deprecated This is a placeholder class that will be properly implemented in later tasks
+ * @deprecated Backward compatibility alias for TaskMasterError
  */
-export class TmCoreError extends Error {
-	constructor(
-		message: string,
-		public code?: string
-	) {
-		super(message);
+export class TmCoreError extends TaskMasterError {
+	constructor(message: string, context?: any) {
+		super(message, context);
 		this.name = 'TmCoreError';
 	}
 }
 
 /**
- * Error thrown when a task is not found
- * @deprecated This is a placeholder class that will be properly implemented in later tasks
+ * @deprecated Backward compatibility alias for FileNotFoundError
  */
-export class TaskNotFoundError extends TmCoreError {
-	constructor(taskId: string) {
-		super(`Task not found: ${taskId}`, 'TASK_NOT_FOUND');
+export class TaskNotFoundError extends TaskMasterError {
+	constructor(taskId: string, context?: any) {
+		super(`Task not found: ${taskId}`, 'TASK_NOT_FOUND', context);
 		this.name = 'TaskNotFoundError';
 	}
 }
 
+// Additional error class for test compatibility
 /**
- * Error thrown when validation fails
- * @deprecated This is a placeholder class that will be properly implemented in later tasks
+ * @deprecated Storage error class for backward compatibility
  */
-export class ValidationError extends TmCoreError {
+export class StorageError extends Error {
+	code = 'STORAGE_ERROR';
 	constructor(message: string) {
-		super(message, 'VALIDATION_ERROR');
-		this.name = 'ValidationError';
-	}
-}
-
-/**
- * Error thrown when storage operations fail
- * @deprecated This is a placeholder class that will be properly implemented in later tasks
- */
-export class StorageError extends TmCoreError {
-	constructor(message: string) {
-		super(message, 'STORAGE_ERROR');
+		super(message);
 		this.name = 'StorageError';
 	}
 }

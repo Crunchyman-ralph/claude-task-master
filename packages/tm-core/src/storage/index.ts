@@ -3,23 +3,15 @@
  * This file exports all storage-related classes and interfaces
  */
 
-// Storage implementations will be defined here
-// export * from './file-storage.js';
-// export * from './memory-storage.js';
-// export * from './storage-interface.js';
+// Storage implementations
+export * from './file-storage.js';
+export * from './storage.interface.js';
 
-// Placeholder exports - these will be implemented in later tasks
-export interface StorageAdapter {
-	read(path: string): Promise<string | null>;
-	write(path: string, data: string): Promise<void>;
-	exists(path: string): Promise<boolean>;
-	delete(path: string): Promise<void>;
-}
-
+// Temporary backward compatibility exports for existing tests
 /**
- * @deprecated This is a placeholder class that will be properly implemented in later tasks
+ * @deprecated This is a placeholder class for backward compatibility with existing tests
  */
-export class PlaceholderStorage implements StorageAdapter {
+export class PlaceholderStorage {
 	private data = new Map<string, string>();
 
 	async read(path: string): Promise<string | null> {
